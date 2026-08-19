@@ -1,0 +1,57 @@
+class Producto:
+
+    def __init__(self, nombre, precio, stock):
+        self.nombre = nombre
+        self.precio = precio
+        self.stock = stock
+
+    def vender(self, cantidad):
+
+        if cantidad <= self.stock:
+            self.stock = self.stock - cantidad
+            print("Venta hecha")
+            print("Se vendió", cantidad, "unidades de", self.nombre)
+        else:
+            print("No se puede hacer la venta")
+            print("No hay stock")
+
+    def reponer(self, cantidad):
+
+        if cantidad > 0:
+            self.stock = self.stock + cantidad
+            print("Se respuso stock")
+            print("Se agregó", cantidad, "unidades de", self.nombre)
+        else:
+            print("La cantidad a reponer debe ser mayor a 0.")
+
+    def valor_inventario(self):
+        return self.precio * self.stock
+
+producto1 = Producto("Camiseta", 15000, 10)
+producto2 = Producto("Pantalon", 30000, 5)
+
+print("PRODUCTO 1")
+print("Nombre:", producto1.nombre)
+print("Precio:", producto1.precio)
+print("Stock:", producto1.stock)
+
+producto1.vender(3)
+
+print("Stock despues de vender:", producto1.stock)
+
+producto1.reponer(5)
+
+print("Stock despues de reponer:", producto1.stock)
+
+print("PRODUCTO 2")
+print("Nombre:", producto2.nombre)
+print("Precio:", producto2.precio)
+print("Stock:", producto2.stock)
+
+producto2.vender(10)
+
+print("Stock despues de intentar vender:", producto2.stock)
+
+producto2.reponer(2)
+
+print("Stock despues de reponer:", producto2.stock)
